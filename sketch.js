@@ -13,11 +13,16 @@ function setup(){
   ground = createSprite(150,300);
   ground.addAnimation("road", ground_animation);
   ground.velocityY = 10;
+
   runner = createSprite(150,500);
   runner.addAnimation("running", runner_animation);
   runner.scale = 0.05;
+
   inviswall1 = createSprite(25,300,10,600);
-  inviswall1.visible = true;
+  inviswall1.visible = false;
+  inviswall2 = createSprite(275,300,10,600);
+  inviswall2.visible = false; 
+
   edges = createEdgeSprites();
   //create sprites here
 }
@@ -30,9 +35,11 @@ if(ground.y > 505){
   ground.y = 300;
 }
 
-runner.collide(edges[3]);
+
 runner.x = World.mouseX;
+
 runner.collide(inviswall1);
+runner.collide(inviswall2);
 drawSprites();
 }
 
